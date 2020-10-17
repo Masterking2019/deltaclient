@@ -202,20 +202,10 @@ SpimeEngine.AfterInit = function(){
 		}
 	};
 	window.addEventListener("orientationchange", function() {
-		SpimeEngine.UpdateDeviceClass();
-			$(".master.item-box").each(function(index) {
-				var win = $(window);
-				var viewport = {
-						top : win.scrollTop(),
-						left : win.scrollLeft()
-					};
-				viewport.bottom = viewport.top + win.height();
-				viewport.right = viewport.left + win.width();
-				if ( ($(this).position().top > (viewport.bottom)) || ($(this).position().bottom < (viewport.top)) ){
-				} else {
-					SpimeEngine.ArrangeHolder($(this))
-				}
-			});
+		setTimeout(function(){
+			SpimeEngine.UpdateDeviceClass();
+			SpimeEngine.ArrangeAll();
+		}, 50);
 	}, false);
 	SpimeEngine.handleUnarranged();
 	if (SpimeEngine.ecommerceSolution == ""){
